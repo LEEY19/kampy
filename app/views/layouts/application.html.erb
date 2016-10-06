@@ -8,7 +8,16 @@
 </head>
 <body>
 
+<div class="container wrapper">
+  <% flash.each do |name, msg| %>
+    <div class="alert wrapper">
+      <%= msg %>
+    </div>
+  <% end %>
+</div>
+
 <%= yield %>
+
 
 </body>
 </html>
