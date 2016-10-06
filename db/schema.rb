@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006065921) do
+ActiveRecord::Schema.define(version: 20161006084549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,27 @@ ActiveRecord::Schema.define(version: 20161006065921) do
   end
 
   create_table "requests", force: :cascade do |t|
+    t.integer  "no_of_kids"
+    t.string   "comment"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "score"
+    t.text     "comment"
+    t.string   "event_title"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "reviews", ["event_id"], name: "index_reviews_on_event_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user_type",                           null: false
@@ -86,13 +101,7 @@ ActiveRecord::Schema.define(version: 20161006065921) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "users_deals", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "deal_id"
-  end
-
-  add_index "users_deals", ["deal_id"], name: "index_users_deals_on_deal_id", using: :btree
-  add_index "users_deals", ["user_id"], name: "index_users_deals_on_user_id", using: :btree
-
   add_foreign_key "children", "users"
+  add_foreign_key "reviews", "events"
+  add_foreign_key "reviews", "users"
 end
