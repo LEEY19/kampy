@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20161006084549) do
   end
 
   create_table "requests", force: :cascade do |t|
+    t.integer  "no_of_kids"
+    t.string   "comment"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "event_id"
