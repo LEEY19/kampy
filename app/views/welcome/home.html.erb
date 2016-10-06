@@ -1,1 +1,16 @@
 <h1>hello!!!!</h1>
+
+<% if @reviews %>
+<% @reviews.each do |review| %>
+<div class="container">
+  <p><%= review.event_title %></p>
+  <p><%= review.comment %></p>
+</div>
+<% end %>
+<% end %>
+
+
+<span class="stars">4.8618164</span>
+<span class="stars">2.6545344</span>
+<span class="stars">0.5355</span>
+<span class="stars">8</span>
