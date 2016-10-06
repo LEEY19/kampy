@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :requests
-  has_many :events, through: :requests
-  has_many :reviews
-  has_many :children
+  has_many :requests, :dependent => :destroy
+  has_many :events, through: :requests, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
+  has_many :children, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
