@@ -1,0 +1,62 @@
+
+
+<div class="form-group">
+    <%= form.label :event_type, "Type of event"%>
+    <%= form.text_field :event_type, placeholder: "Enter Title", class: "form-control", id: "title" %>
+  </div>
+
+<div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Enter Title", class: "form-control", id: "title" %>
+</div>
+
+<div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, placeholder: "Enter Location", class: "form-control", id: "location" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :start_date%>
+  <%= form.date_field :start_date, placeholder: "Starts on", class: "form-control", id: "start_date" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :end_date%>
+  <%= form.date_field :end_date, placeholder: "Starts on", class: "form-control", id: "end_date" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :start_time %>
+  <%= form.time_field :start_time, placeholder: "Starts at", class: "form-control", id: "start_time" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :end_time %>
+  <%= form.time_field :end_time, placeholder: "Starts at", class: "form-control", id: "end_time" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :description %>
+  <%= form.text_area :description, placeholder: "Enter description", class: "form-control", rows: "5", id: "description" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :isfree, "Is it FREE?" %>
+  <%= form.check_box :isfree, class: "form-control", id: "isfree" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :rate, "Price" %>
+  <%= form.text_field :rate, class: "form-control", id: "rate" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :open_spots, "How many children can attend?"%>
+  <%= form.select :open_spots, options_for_select([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10 ], 1), class: "form-control", id: "open_spots" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :age_range, "Suggested age range:" %>
+  <%= form.select :age_range, options_for_select([ "  1-3", "  4-6  ", " 7-11", "11-14", "15 +" ], "choose"), class: "form-control", id: "age_range" %>
+</div>
+
