@@ -52,13 +52,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
+                        <%= link_to "Create an event", new_event_path, :class => "page-scroll"%>
+                    </li>
+                    <li>
                         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "page-scroll" %>
                     </li>
                     <li>
                       <div class="dropdown" id='nav-dropdown'>
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Edit Profile</a></li>
+                          <li><a href="/users/edit">Edit Profile</a></li>
                           <li><a href="#">Setting</a></li>
                           <li><a href="#">Random</a></li>
                         </ul>

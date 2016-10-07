@@ -1,3 +1,13 @@
 <div id="event_show">
 <%= @event.title %>
 </div>
+
+
+<%= form_for :button, method: :get, url: new_request_path do |f| %>
+
+	<%=	f.hidden_field :event_id ,value: @event.id %>
+	<br>
+	<%= f.submit "Book Now", class:"btn btn-primary" %>
+
+<% end %>
+
