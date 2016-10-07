@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20161006131640) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "avatar"
-    t.string   "photos"
+    t.json     "photos"
     t.string   "family_description"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
