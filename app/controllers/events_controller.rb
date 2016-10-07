@@ -13,12 +13,12 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-    @event = current_user.event.new(event_params)
+    @event = current_user.events.new(event_params)
 
       if @event.save(validate: false)
 
       # I want o go to my listing show page
-        redirect_to event_path # This is the way to pass in an id
+        redirect_to @event# This is the way to pass in an id
       else
         redirect_to new_event_path
       end
