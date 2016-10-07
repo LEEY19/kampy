@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+  mount_uploaders :photos, PhotoUploader
   has_many :requests, :dependent => :destroy
   has_many :events, through: :requests, :dependent => :destroy
   has_many :reviews, :dependent => :destroy

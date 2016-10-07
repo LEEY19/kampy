@@ -52,8 +52,6 @@ ActiveRecord::Schema.define(version: 20161006084549) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "no_of_kids"
-    t.string   "comment"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "event_id"
@@ -82,7 +80,7 @@ ActiveRecord::Schema.define(version: 20161006084549) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "avatar"
-    t.string   "photos"
+    t.json     "photos"
     t.string   "family_description"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
