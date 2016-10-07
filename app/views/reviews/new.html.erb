@@ -8,7 +8,8 @@
   </div>
 
   <div>
-    <%= form.select :score, [1,2,3,4,5], { :include_blank => '-- Select One --' }, :required => true, class: "dropdown-menu" %>
+    <%= form.label :"Rating" %>
+    <%= form.select :score, [0, 1,2,3,4,5], :required => true, class: "dropdown-menu" %>
   </div>
 
   <div class="text-field">
