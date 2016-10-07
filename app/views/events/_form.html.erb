@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <%= form.label :event_type, "Type of event"%>
-    <%= form.text_field :event_type, placeholder: "Enter Title", class: "form-control", id: "title" %>
+    <%= form.select :event_type, options_for_select([ "Event", "Suggestion"], 1), class: "form-control", id: "event_type" %>
   </div>
 
 <div class="form-group">
@@ -11,9 +11,34 @@
 </div>
 
 <div class="form-group">
-    <%= form.label :location %>
-    <%= form.text_field :location, placeholder: "Enter Location", class: "form-control", id: "location" %>
+    <%= form.label :housenumber %>
+    <%= form.text_field :housenumber, placeholder: "House No.", class: "form-control", id: "housenumber" %>
 </div>
+<div class="form-group">
+    <%= form.label :street %>
+    <%= form.text_field :street, placeholder: "Street", class: "form-control", id: "street" %>
+</div>
+
+<div class="form-group">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode, placeholder: "Postcode", class: "form-control", id: "postcode" %>
+</div>
+
+<div class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city, placeholder: "Your city", class: "form-control", id: "city" %>
+</div>
+
+<div class="form-group">
+    <%= form.label :state %>
+    <%= form.text_field :state, placeholder: "State", class: "form-control", id: "state" %>
+</div>
+
+<div class="form-group">
+    <%= form.label :country %>
+    <%= form.text_field :country, placeholder: "country", class: "form-control", id: "country" %>
+</div>
+
 
 <div class="form-group">
   <%= form.label :start_date%>
@@ -46,8 +71,8 @@
 </div>
 
 <div class="form-group">
-  <%= form.label :rate, "Price" %>
-  <%= form.text_field :rate, class: "form-control", id: "rate" %>
+  <%= form.label :price, "Price" %>
+  <%= form.text_field :price, class: "form-control", id: "price" %>
 </div>
 
 <div class="form-group">

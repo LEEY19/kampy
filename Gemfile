@@ -31,6 +31,18 @@ gem 'omniauth-facebook'
 gem "figaro"
 #for security
 
+#to transform address into geo location
+gem 'geocoder'
+
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# for image uploading
+
+gem 'rmagick'
+# for resizing image
+
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
