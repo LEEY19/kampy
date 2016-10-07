@@ -1,3 +1,4 @@
+
 <h1 >Event Show page</h1>
 
 <!-- < %= image_tag (@listing.avatars[0].square.url) %><br>
@@ -23,7 +24,7 @@
     < %= render partial: '/reservations/form', locals: {form: form ,listing: @listing }%> -->
 
 
-<header><h1 class="display-4"><%= @event.title %></h1></header>
+
 
 <p>Address: <%= @event.full_address %></p>
 <p>Coordinates: <%= @event.latitude %> <%= @event.longitude %></p>
@@ -36,3 +37,18 @@
 <!-- < %= link_to 'Delete', user_path(current_user.id), method : :delete %> -->
   <%= link_to "delete", event_path(@event.id), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
 </div>
+
+<div id="event_show">
+<%= @event.title %>
+</div>
+
+
+<%= form_for :button, method: :get, url: new_request_path do |f| %>
+
+	<%=	f.hidden_field :event_id ,value: @event.id %>
+	<br>
+	<%= f.submit "Book Now", class:"btn btn-primary" %>
+
+<% end %>
+
+

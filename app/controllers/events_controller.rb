@@ -17,14 +17,22 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-    # byebug
+
     @event = current_user.events.new(event_params)
     @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
 
+    @event = current_user.events.new(event_params)
+
+
       if @event.save
+
 
       # I want o go to my event show page
         redirect_to event_path(@event.id) # This is the way to pass in an id
+
+      # I want o go to my listing show page
+        redirect_to @event# This is the way to pass in an id
+
       else
         redirect_to new_event_path
       end

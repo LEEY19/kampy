@@ -5,12 +5,12 @@
 
   <div class="field">
     <%= f.label :avatar %><br />
-    <%= f.text_field :avatar, autofocus: true %>
+    <%= f.file_field :avatar, multiple: false, autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :photos %><br />
-    <%= f.text_field :photos, autofocus: true %>
+    <%= f.file_field :photos, multiple: true, autofocus: true %>
   </div>
 
   <div class="field">
