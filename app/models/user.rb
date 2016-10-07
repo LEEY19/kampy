@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  ratyrate_rater
   has_many :requests, :dependent => :destroy
   has_many :events, through: :requests, :dependent => :destroy
   has_many :reviews, :dependent => :destroy

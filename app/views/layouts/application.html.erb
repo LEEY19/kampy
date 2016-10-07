@@ -3,6 +3,7 @@
 <head>
   <title>Kampy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= include_gon %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -43,8 +44,10 @@
   <% end %>
 </div>
 
+<div class="container">
+<%= Gon::Base.render_data({}) %>
 <%= yield %>
-
+</div>
 
 </body>
 </html>

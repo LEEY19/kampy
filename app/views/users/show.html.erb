@@ -1,0 +1,54 @@
+
+<h1>Name: <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<p>Family description: <%= @user.family_description%></p>
+
+<button class="btn btn-primary" id="review_user_button">Review User</button>
+
+<div class="container">
+
+  <%= form_for @review, :html => {:id => "review_form"} do |form| %>
+  <div class="text-field">
+    <%= form.label :"Event Title" %>
+    <%= form.text_field :event_title, type: 'text', :required => true, class: 'form-control' %>
+  </div>
+
+  <div id="user_stars"></div>
+
+  <div class="text-field">
+    <%= form.label :"Comments" %>
+    <%= form.text_area :comment, type: 'text', :required => true, class: 'form-control' %>
+  </div>
+
+  <%= hidden_field_tag(:user_id, @user.id)%>
+  <%= form.submit "Submit Review", class: "btn btn-primary" %>
+
+  <% end %>
+
+  <script>
+    $('#user_stars').raty({
+      path: '/assets',
+      scoreName: 'review[score]',
+      score: 1
+    });
+
+  </script>
+
+
+</div>
+
+<% @user.reviews.order('created_at DESC').each do |review| %>
+  <div class="container">
+    Rating: 
+    <div id="stars_<%= review.id %>"></div>
+    Event Title: <%= review.event_title %> <br>
+    Comments: <%= review.comment %>
+  </div>
+  -------------------------------------
+  <script>
+    $('#stars_<%= review.id %>').raty({
+      path: '/assets',
+      readOnly: true,
+      score: <%= review.score %>
+    });
+  </script>
+<% end %>
