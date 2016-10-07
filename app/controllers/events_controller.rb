@@ -17,10 +17,10 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-    # byebug
+
     @event = current_user.events.new(event_params)
     @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
-    byebug
+
       if @event.save
 
 
