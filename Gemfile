@@ -30,6 +30,9 @@ gem 'omniauth-facebook'
 gem "figaro"
 #for security
 
+#to transform address into geo location
+gem 'geocoder'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

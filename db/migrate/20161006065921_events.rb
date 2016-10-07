@@ -11,7 +11,7 @@ class Events < ActiveRecord::Migration
       t.time    :end_time
       t.string  :description
       t.boolean :isfree, default: true
-      t.float   :rate, null: false
+      t.float   :price
       t.integer :open_spots, null: false
       t.string  :age_range
       t.string  :event_pic
