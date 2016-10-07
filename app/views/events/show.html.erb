@@ -1,3 +1,43 @@
+
+<h1 >Event Show page</h1>
+
+<!-- < %= image_tag (@listing.avatars[0].square.url) %><br>
+< %= @listing.title %> -->
+<br>
+<%= @event.location %>
+<br>
+<%= @event.description %>
+<br>
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+              class: 'img-fluid img-rounded', alt: "#{@event.title} on the map"%>
+
+<!-- < % @listing.tag_list.each do |tag|%>
+
+  <a href="/tags/< %= tag %>"> #< %= tag %></a>
+
+< % end %> -->
+
+<br>
+
+<!-- < %= form_for [@event, @reservation], url: listing_reservations_path(@listing.id) do |form| %>
+    < %= render partial: '/reservations/form', locals: {form: form ,listing: @listing }%> -->
+
+
+
+
+<p>Address: <%= @event.full_address %></p>
+<p>Coordinates: <%= @event.latitude %> <%= @event.longitude %></p>
+
+
+
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_event_path(@event.id), class: "btn btn-primary"%>
+<!-- < %= link_to 'Delete', user_path(current_user.id), method : :delete %> -->
+  <%= link_to "delete", event_path(@event.id), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+</div>
+
 <div id="event_show">
 <%= @event.title %>
 </div>
@@ -10,4 +50,5 @@
 	<%= f.submit "Book Now", class:"btn btn-primary" %>
 
 <% end %>
+
 
