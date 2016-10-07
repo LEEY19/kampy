@@ -80,6 +80,7 @@ GEM
     geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     gon (6.1.0)
       actionpack (>= 3.0)
       json
@@ -211,6 +212,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 4.2)
   figaro
+  gmaps4rails
   geocoder
   gon (~> 6.1)
   jbuilder (~> 2.0)
