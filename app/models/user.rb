@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   ratyrate_rater
   has_many :requests, :dependent => :destroy
   has_many :events, through: :requests, :dependent => :destroy
+  has_many :events
   has_many :reviews, :dependent => :destroy
   has_many :children, :dependent => :destroy
   # Include default devise modules. Others available are:
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
       name_array = auth.info.name.split(" ")
       user.first_name = name_array[0..-2].join(" ")
       user.last_name = name_array.last
-      user.avatar = auth.info.image 
+      user.avatar = auth.info.image
       user.user_type = "user"
     end
   end
