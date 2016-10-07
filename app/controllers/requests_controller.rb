@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 	def new 
 		@request = Request.new
-		@event = Event.find(params[:event_id])
+		@event = Event.new
 		#@event is only created temporarily as the event id will be obtained from the event show page
 	end
 
