@@ -69,6 +69,11 @@
                         <%= link_to "Create an event", new_event_path, :class => "page-scroll"%>
                     </li>
                     <li>
+                      <%= link_to conversations_path do %>
+                        <i class="fa fa-envelope-o"></i> Messages
+                      <% end %>
+                    </li>
+                    <li>
                         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "page-scroll" %>
                     </li>
                     <li>

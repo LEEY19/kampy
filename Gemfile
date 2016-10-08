@@ -34,6 +34,9 @@ gem "figaro"
 #to transform address into geo location
 gem 'geocoder'
 
+# real time chat
+gem 'private_pub'
+gem 'thin'
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # for image uploading

@@ -21,3 +21,12 @@
 .unread {
   border-left: 3px solid red;
 }
+
+.conversation {
+  color: #7f7f7f;
+  padding: 10px;
+}
+
+.conversation:hover, .conversation:focus {
+  background-color: #F4F4F5;
+}
