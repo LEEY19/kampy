@@ -7,8 +7,12 @@ class RequestsController < ApplicationController
 
 	def create
 		@request = current_user.requests.new(request_params)
+		@event = @request.event
 		@request.status = "Pending"
 		if @request.save
+		  (@event.users.uniq - [current_user]).each do |user|
+	        Notification.create(recipient: user, actor: current_user, action: "submitted", notifiable: @request)
+	      end
 			redirect_to @request
 		else
 			redirect_to root
@@ -16,8 +20,7 @@ class RequestsController < ApplicationController
 	end
 
 	def show
-		byebug
-		@request = Request.find_by(event_id: params[:event_id])
+		@request = Request.find(params[:id])
 	end
 
 	private

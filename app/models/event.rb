@@ -11,5 +11,4 @@ class Event < ActiveRecord::Base
   has_many :events_categories, :dependent => :destroy
   belongs_to :user
 
-
 end

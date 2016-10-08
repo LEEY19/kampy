@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007072817) do
+ActiveRecord::Schema.define(version: 20161007155142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20161007072817) do
     t.time     "end_time"
     t.string   "description"
     t.boolean  "isfree",       default: true
-    t.float    "price"
+    t.float    "price",                       null: false
     t.integer  "open_spots",                  null: false
     t.string   "age_range"
     t.string   "event_pic"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 20161007072817) do
     t.string   "state"
     t.string   "country"
     t.string   "full_address"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -104,6 +115,8 @@ ActiveRecord::Schema.define(version: 20161007072817) do
 
   create_table "requests", force: :cascade do |t|
     t.string   "status"
+    t.string   "comment"
+    t.string   "no_of_kids"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
