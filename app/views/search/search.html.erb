@@ -1,0 +1,16 @@
+
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <h3>
+        <%= link_to event.title, controller: "events", action: "show", id: event._id%>
+      </h3>
+    </li>
+    <li>
+      <p><%= event.event_type %></p>
+    </li>
+    <li>
+      <p><%= event.location %></p>
+    </li>
+  <% end %>
+</ul>

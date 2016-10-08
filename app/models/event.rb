@@ -1,4 +1,8 @@
+require 'elasticsearch/model'
+
 class Event < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   after_validation :geocode
   # before_create :full_address
@@ -13,3 +17,5 @@ class Event < ActiveRecord::Base
 
 
 end
+
+Event.import
