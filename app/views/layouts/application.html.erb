@@ -50,7 +50,7 @@
 
             <div class="navbar-form navbar-left" role="search">
                 <%= form_tag search_path, method: :get do |f| %>
-                <%= text_field_tag :q, params[:q], placeholder: "name of activity and location" %>
+                <%= text_field_tag :q, params[:q], placeholder: "type your activity and location", size: 40 %>
                 <%= submit_tag "Search" %>
                 <% end %>
             </div>
