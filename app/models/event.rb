@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   mount_uploaders :event_pic, EventPicUploader
   after_validation :geocode
   # before_create :full_address
-  geocoded_by :full_address
+  geocoded_by :location
   reverse_geocoded_by :latitude, :longitude, :address => :full_address
   has_many :users, through: :requests, :dependent => :destroy
   has_many :reviews, :dependent => :destroy
