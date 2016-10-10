@@ -15,16 +15,27 @@ Rails.application.routes.draw do
 
   resources :reviews
 
+  resources :events 
+ 
+
   resources :requests do 
     get 'confirm', on: :member
     get 'decline', on: :member
   end
 
-  resources :events
-
   get '/myeventsandrequests' => "users#myeventsandrequests", :as => "myeventsandrequests"
 
 
+
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

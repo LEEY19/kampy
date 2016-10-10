@@ -15,33 +15,32 @@ class Event < ActiveRecord::Base
   has_many :events_categories, :dependent => :destroy
   belongs_to :user
 
+
   def self.search(query)
-  __elasticsearch__.search(
-    {
-      query: {
-        multi_match: {
-          query: query,
-          type: "most_fields",
-          fuzziness: 3,
-          fields: ['title^10', 'text', 'location^8', 'text','event_type^9', 'text']
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            type: "most_fields",
+            fuzziness: 3,
+            fields: ['title^10', 'text', 'location^8', 'text','event_type^9', 'text']
+          }
         }
       }
-    }
-  )
-end
-
-settings index: { number_of_shards: 1 } do
-  mappings dynamic: 'false' do
-    indexes :title, analyzer: 'english'
-    indexes :text, analyzer: 'english'
-    indexes :location, analyzer: 'english'
-    indexes :text, analyzer: 'english'
-    indexes :event_type, analyzer: 'english'
-    indexes :text, analyzer: 'english'
+    )
   end
-end
 
-
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :title, analyzer: 'english'
+      indexes :text, analyzer: 'english'
+      indexes :location, analyzer: 'english'
+      indexes :text, analyzer: 'english'
+      indexes :event_type, analyzer: 'english'
+      indexes :text, analyzer: 'english'
+    end
+  end
 end
 
 # Delete the previous events index in Elasticsearch
