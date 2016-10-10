@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :transactions, only: [:new, :create]
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
                                         :registrations => "registrations" }
 
@@ -10,11 +12,18 @@ Rails.application.routes.draw do
   root "welcome#home"
 
   resources :users, only: [:show]
+
   resources :reviews
 
-  resources :requests
+  resources :requests do 
+    get 'confirm', on: :member
+    get 'decline', on: :member
+  end
 
   resources :events
+
+  get '/myeventsandrequests' => "users#myeventsandrequests", :as => "myeventsandrequests"
+
 
 
 

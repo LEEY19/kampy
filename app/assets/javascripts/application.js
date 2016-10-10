@@ -16,7 +16,8 @@
 //= require jquery.raty
 //= require ratyrate
 //= require bootstrap-sprockets
-
+//= require underscore
+//= require gmaps_google
 //= require turbolinks
 //= require_tree .
 
