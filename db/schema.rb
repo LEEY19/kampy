@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20161009212200) do
 
   add_index "children", ["user_id"], name: "index_children_on_user_id", using: :btree
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "event_type"
     t.string   "title",                       null: false
@@ -51,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.time     "end_time"
     t.string   "description"
     t.boolean  "isfree",       default: true
-    t.float    "price"
+    t.float    "price",                       null: false
     t.integer  "open_spots",                  null: false
     t.string   "age_range"
     t.string   "event_pic"
@@ -67,6 +74,28 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.string   "state"
     t.string   "country"
     t.string   "full_address"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -136,7 +165,7 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "avatar"
-    t.json     "photos"
+    t.string   "photos"
     t.string   "family_description"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -156,6 +185,8 @@ ActiveRecord::Schema.define(version: 20161009212200) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "children", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "events"
   add_foreign_key "reviews", "users"
 end

@@ -34,6 +34,9 @@ gem "figaro"
 #to transform address into geo location
 gem 'geocoder'
 
+# real time chat
+gem 'private_pub'
+gem 'thin'
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # for image uploading
@@ -57,10 +60,18 @@ gem 'elasticsearch-rails'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
 gem 'ratyrate'
 gem 'gon', '~> 6.1'
 gem 'gmaps4rails'
+
+gem 'font-awesome-rails', '~> 4.5'
+
+# customer support
+gem 'zopim_rails', '0.0.8'
+
 gem 'braintree', '~> 2.66'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

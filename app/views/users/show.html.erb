@@ -1,7 +1,28 @@
 
-<h1>Name: <%= "#{@user.first_name} #{@user.last_name}" %></h1>
-<p>Family description: <%= @user.family_description%></p>
+<div class="row">
+  <div class="col-md-3">
+    <div class="center">
+      avatar here      
+      <% if current_user != @user %>
+        <div class="row-space-2">
+          <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+        </div>
+      <% end %>
+      
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Verification</div> 
+      <div class="panel-body">
+        Email Address<br>
+        Phone Number
+      </div>
+    </div>
+  </div>
 
+<<<<<<< HEAD
+  <div class="col-md-9">
+    <h2><%= @user.first_name %></h2>
+=======
 <div class="container">
   <h2>Past events hosted</h2>
   <% Event.where("user_id = ? AND start_date <= ?", @user.id, Date.today).each do |event| %>
@@ -18,53 +39,83 @@
 
 
 <button class="btn btn-primary" id="review_user_button">Review User</button>
+>>>>>>> master
 
-<div class="container">
+    <div class="description row-space-3">
+        Family description: <%= @user.family_description%>    
+    </div>
 
-  <%= form_for @review, :html => {:id => "review_form"} do |form| %>
-  <div class="text-field">
-    <%= form.label :"Event Title" %>
-    <%= form.text_field :event_title, type: 'text', :required => true, class: 'form-control' %>
+    <h4>Events (<%= @user.events.length %>)</h4><br>
+
+    <div class="row">
+      
+      <% @user.events.each do |event| %>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading preview">
+              avatar image of event
+            </div>
+            <div class="panel-body">
+              <%= link_to event.title, event %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
   </div>
+      <button class="btn btn-primary" id="review_user_button">Review User</button>
 
-  <div id="user_stars"></div>
+      <div class="container">
 
-  <div class="text-field">
-    <%= form.label :"Comments" %>
-    <%= form.text_area :comment, type: 'text', :required => true, class: 'form-control' %>
-  </div>
+        <%= form_for @review, :html => {:id => "review_form"} do |form| %>
+        <div class="text-field">
+          <%= form.label :"Event Title" %>
+          <%= form.text_field :event_title, type: 'text', :required => true, class: 'form-control' %>
+        </div>
 
-  <%= hidden_field_tag(:user_id, @user.id)%>
-  <%= form.submit "Submit Review", class: "btn btn-primary" %>
+        <div id="user_stars"></div>
 
-  <% end %>
+        <div class="text-field">
+          <%= form.label :"Comments" %>
+          <%= form.text_area :comment, type: 'text', :required => true, class: 'form-control' %>
+        </div>
 
-  <script>
-    $('#user_stars').raty({
-      path: '/assets',
-      scoreName: 'review[score]',
-      score: 1
-    });
+        <%= hidden_field_tag(:user_id, @user.id)%>
+        <%= form.submit "Submit Review", class: "btn btn-primary" %>
 
-  </script>
+        <% end %>
+
+        <script>
+          $('#user_stars').raty({
+            path: '/assets',
+            scoreName: 'review[score]',
+            score: 1
+          });
+
+        </script>
 
 
+      </div>
+
+      <% @user.reviews.order('created_at DESC').each do |review| %>
+        <div class="container">
+          Rating: 
+          <div id="stars_<%= review.id %>"></div>
+          Event Title: <%= review.event_title %> <br>
+          Comments: <%= review.comment %>
+        </div>
+        -------------------------------------
+        <script>
+          $('#stars_<%= review.id %>').raty({
+            path: '/assets',
+            readOnly: true,
+            score: <%= review.score %>
+          });
+        </script>
+      <% end %>
 </div>
 
 
-<% @user.reviews.order('created_at DESC').each do |review| %>
-  <div class="container">
-    Rating: 
-    <div id="stars_<%= review.id %>"></div>
-    Event Title: <%= review.event_title %> <br>
-    Comments: <%= review.comment %>
-  </div>
-  -------------------------------------
-  <script>
-    $('#stars_<%= review.id %>').raty({
-      path: '/assets',
-      readOnly: true,
-      score: <%= review.score %>
-    });
-  </script>
-<% end %>
+

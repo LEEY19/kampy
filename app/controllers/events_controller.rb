@@ -22,11 +22,6 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
       if @event.save
         @event.update(user_id: current_user.id)
         redirect_to @event, notice: "Your event is successfully created!"
-
-
-      # I want o go to my event show page
-        redirect_to event_path(@event.id) # This is the way to pass in an id
-
       else
         render 'new'
       end
