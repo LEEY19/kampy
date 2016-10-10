@@ -1,7 +1,9 @@
 
 <h1 >Event Show page</h1>
 
-posted by <strong><%= @event.user.first_name %></strong><br>
+
+<p>This event has been posted by <strong><%= @event.user.first_name %></strong> who will also be there to supervise the activity.</p>
+
 <!-- < %= image_tag (@listing.avatars[0].square.url) %><br>
 < %= @listing.title %> -->
 
@@ -13,11 +15,11 @@ posted by <strong><%= @event.user.first_name %></strong><br>
 
 
 <br>
-<%= @event.location %>
-<br>
-<%= @event.description %>
-<br>
-
+<p><%= @event.location %>
+  <br>
+  <%= @event.description %>
+  <br>
+</p>
  <div style='width: 800px;'>
     <div id="geolocation" style='width: 800px; height: 400px;'></div>
   </div>
@@ -34,8 +36,8 @@ posted by <strong><%= @event.user.first_name %></strong><br>
 
 
 
-
-<p>Address: <%= @event.full_address %></p>
+<!--
+<p>Address: < %= @event.full_address %></p> -->
 <p>Coordinates: <%= @event.latitude %> <%= @event.longitude %></p>
 
 
