@@ -62,6 +62,8 @@ gem 'gon', '~> 6.1'
 gem 'gmaps4rails'
 gem 'font-awesome-rails', '~> 4.5'
 
+# customer support
+gem 'zopim_rails', '0.0.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

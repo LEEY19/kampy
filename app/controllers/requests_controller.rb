@@ -10,9 +10,6 @@ class RequestsController < ApplicationController
 		@event = @request.event
 		@request.status = "Pending"
 		if @request.save
-		  (@event.users.uniq - [current_user]).each do |user|
-	        Notification.create(recipient: user, actor: current_user, action: "submitted", notifiable: @request)
-	      end
 			redirect_to @request
 		else
 			redirect_to root
