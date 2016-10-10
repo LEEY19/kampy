@@ -17,7 +17,7 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
   def create
 
     @event = Event.new(event_params)
-    @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
+    # @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
 
       if @event.save
         @event.update(user_id: current_user.id)
