@@ -2,6 +2,21 @@
 <h1>Name: <%= "#{@user.first_name} #{@user.last_name}" %></h1>
 <p>Family description: <%= @user.family_description%></p>
 
+<div class="container">
+  <h2>Past events hosted</h2>
+  <% Event.where("user_id = ? AND start_date <= ?", @user.id, Date.today).each do |event| %>
+  <p><%= link_to "#{event.title}", event %></p>
+  <% end %>
+</div>
+
+<div class="container">
+  <h2>Upcoming events hosted</h2>
+  <% Event.where("user_id = ? AND start_date > ?", @user.id, Date.today).each do |event| %>
+  <p><%= link_to "#{event.title}", event %></p>
+  <% end %>
+</div>
+
+
 <button class="btn btn-primary" id="review_user_button">Review User</button>
 
 <div class="container">
@@ -35,6 +50,7 @@
 
 
 </div>
+
 
 <% @user.reviews.order('created_at DESC').each do |review| %>
   <div class="container">

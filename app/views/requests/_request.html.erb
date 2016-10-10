@@ -1,0 +1,16 @@
+<div id="row_<%= request.id %>" class="request_box">
+  <div id="red_<%= request.id %>" style="position: absolute; width: 90%; height: 100%; background:#FF2400; opacity: 0;"></div>
+  <div class="col-md-8">
+      <span><%= link_to "#{request.user.first_name} #{request.user.last_name}", request.user %></span><span class="text-muted"> "<%= request.comment %>" </span>
+  </div>
+  <div class="col-md-2">
+      <%= form_for :button, method: :get, url: confirm_request_path(request), remote: true, :html => {:class => "confirm"} do |f| %>
+      <%= f.submit "Confirm", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+  <div class="col-md-2">
+      <%= form_for :button, method: :get, url: decline_request_path(request), remote: true, :html => {:class => "decline"} do |f| %>
+      <%= f.submit "Decline", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>

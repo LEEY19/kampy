@@ -9,9 +9,9 @@
 <%= @event.description %>
 <br>
 
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
-              class: 'img-fluid img-rounded', alt: "#{@event.title} on the map"%>
-
+ <div style='width: 800px;'>
+    <div id="geolocation" style='width: 800px; height: 400px;'></div>
+  </div>
 <!-- < % @listing.tag_list.each do |tag|%>
 
   <a href="/tags/< %= tag %>"> #< %= tag %></a>

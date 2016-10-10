@@ -735,6 +735,13 @@ ul.social-buttons li a:active {
 .portfolio-modal .modal-backdrop {
   opacity: 0;
   display: none;
+
+}
+.modal-backdrop.in{
+  z-index: -9999;
+}
+#mainNav {
+  z-index: 2000;
 }
 ::-moz-selection {
   text-shadow: none;

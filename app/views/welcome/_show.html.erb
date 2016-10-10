@@ -1,0 +1,46 @@
+
+<div class="portfolio-modal modal fade" id="modal_<%= event.id %>" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 99999;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2><%= event.title %></h2>
+                            <p class="item-intro text-muted"><%= event.description %></p>
+                            <img class="img-responsive img-centered" src="assets/portfolio/roundicons-free.png" alt="">
+                 
+                            <p><strong><%= "#{event.start_date}, #{event.start_time} - #{event.end_date}, #{event.end_time}" %></strong></p>
+                            <p><strong><%= "#{event.location}" %></strong></p>
+                            <ul class="list-inline">
+                                <li>Price: <%= event.price %></li>
+                                <li>Children Age Range: <%= event.age_range %></li>
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                            <%= link_to "Host's Profile", User.find(event.user_id), class: "btn btn-default" %>
+                            <%= link_to "Message Host", "#", class: "btn btn-default" %><br>
+
+                            <div class="row">
+                              <%= form_for :booking_request, url: requests_path, :method => 'post', remote: true, :html => {:id => "request_form"} do |f| %>
+                                <div class="col-md-8"><%= f.text_field :comment, placeholder: "Any short message for the host?", class: "form-control"%></div>
+                                <div class="col-md-2"><%= f.select :no_of_kids, [1,2,3,4,5], :prompt => 'No. of kids', class: "form-control" %></div>
+                                <%= hidden_field_tag 'event_id', event.id %>
+                                <div class="col-md-2"><%= submit_tag "Book Now", name: nil, class: "btn btn-default btn-primary" %></div>
+                            <% end %>
+
+                            <strong><p class="bookingmessage"></p></strong>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

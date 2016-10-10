@@ -12,37 +12,23 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 
   def new
     @event= Event.new
-    @user = User.new # To delete later - DEV
-
   end
 
   def create
 
-    @event = current_user.events.new(event_params)
+    @event = Event.new(event_params)
     @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
 
-    @event = current_user.events.new(event_params)
-
-
       if @event.save
-
-
-      # I want o go to my event show page
-        redirect_to event_path(@event.id) # This is the way to pass in an id
-
-      # I want o go to my listing show page
-        redirect_to @event# This is the way to pass in an id
-
+        @event.update(user_id: current_user.id)
+        redirect_to @event, notice: "Your event is successfully created!"
       else
-        redirect_to new_event_path
+        render 'new'
       end
-
   end
 
   def update
     if @event.update(event_params)
-
-      # The next line is because I need to call the user_id parameter
 
       @event.user_id = current_user.id
       redirect_to event_path(@event.id)
@@ -52,7 +38,10 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 
   end
 
-
+  def show
+    @event = Event.find(params[:id])
+    gon.hashh = {lat: @event.latitude, lng: @event.longitude, infowindow: "You are here"}
+  end
 
 
 private

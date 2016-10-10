@@ -1,0 +1,12 @@
+<div class="container">
+
+<% @events.each do |event| %>
+
+  <div class="requests">
+  <h3><%= event.title %></h3>
+      <%= render event.requests.where("status = ?", "Pending") %>
+  </div>
+
+<% end %>
+
+</div>
