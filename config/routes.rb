@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
 
-
+  get 'search', to: 'search#search'
+  
   root "welcome#home"
 
   resources :users, only: [:show]

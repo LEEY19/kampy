@@ -48,6 +48,13 @@
                 <a class="navbar-brand page-scroll" href="/">Kampy</a>
             </div>
 
+            <div class="navbar-form navbar-left" role="search">
+                <%= form_tag search_path, method: :get do |f| %>
+                <%= text_field_tag :q, params[:q], placeholder: "type your activity and location", size: 40 %>
+                <%= submit_tag "Search" %>
+                <% end %>
+            </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
