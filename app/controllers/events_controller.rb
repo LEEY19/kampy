@@ -14,7 +14,7 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-
+   
     @event = Event.new(event_params)
     @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
 
@@ -46,7 +46,7 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 private
 
   def event_params
-      params.require(:event).permit(:event_type, :title, :location, :start_date, :end_date, :start_time, :end_time, :description, :isfree, :price, :open_spots, :age_range, :event_pic, :user_id, :housenumber, :street, :postcode, :city, :state, :country, {event_pic: []})
+      params.require(:event).permit(:event_type, :title, :location, :start_date, :end_date, :start_time, :end_time, :description, :isfree, :price, :open_spots, :age_range, :event_pic, :user_id, :housenumber, :street, :postcode, :city, :state, :country, {event_pic: []}, category_ids:[])
   end
 
   def set_event
