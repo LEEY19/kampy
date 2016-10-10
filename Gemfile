@@ -43,6 +43,10 @@ gem 'rmagick'
 
 gem 'mini_magick'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+# for search feature
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

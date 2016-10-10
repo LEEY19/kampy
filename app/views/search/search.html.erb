@@ -1,0 +1,13 @@
+
+<div class="container">
+  <% @events.each do |event| %>
+      <h4>
+        <%= link_to event.title, controller: "events", action: "show", id: event._id%>
+      </h4>
+      <p>Event Type: <strong><%= event.event_type %></strong></p>
+      <p>Event Location: <strong><%= event.location %></strong></p>
+      <p>Event Description: <strong><%= event.description %></strong></p>
+      <p>Price: <strong><%= event.price %></strong></p>
+      <hr>
+  <% end %>
+</div>
