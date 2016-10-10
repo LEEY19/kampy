@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009212200) do
+ActiveRecord::Schema.define(version: 20161010074652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,10 +58,9 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.time     "end_time"
     t.string   "description"
     t.boolean  "isfree",       default: true
-    t.float    "price",                       null: false
+    t.float    "price"
     t.integer  "open_spots",                  null: false
     t.string   "age_range"
-    t.string   "event_pic"
     t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -74,6 +73,7 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.string   "state"
     t.string   "country"
     t.string   "full_address"
+    t.json     "event_pic"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20161009212200) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "avatar"
-    t.string   "photos"
+    t.json     "photos"
     t.string   "family_description"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

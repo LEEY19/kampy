@@ -7,7 +7,6 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 
   def index
     @events = Event.all
-
   end
 
   def new
@@ -47,7 +46,7 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 private
 
   def event_params
-      params.require(:event).permit(:event_type, :title, :location, :start_date, :end_date, :start_time, :end_time, :description, :isfree, :price, :open_spots, :age_range, :event_pic, :user_id, :housenumber, :street, :postcode, :city, :state, :country)
+      params.require(:event).permit(:event_type, :title, :location, :start_date, :end_date, :start_time, :end_time, :description, :isfree, :price, :open_spots, :age_range, :event_pic, :user_id, :housenumber, :street, :postcode, :city, :state, :country, {event_pic: []})
   end
 
   def set_event

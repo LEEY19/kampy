@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  mount_uploaders :event_pic, EventPicUploader
   after_validation :geocode
   # before_create :full_address
   geocoded_by :full_address

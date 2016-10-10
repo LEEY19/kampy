@@ -1,9 +1,17 @@
 
 <h1 >Event Show page</h1>
 
-posted by <strong><%= @event.user.first_name %></strong>
+posted by <strong><%= @event.user.first_name %></strong><br>
 <!-- < %= image_tag (@listing.avatars[0].square.url) %><br>
 < %= @listing.title %> -->
+
+  <% if @event.event_pic.present? %>
+    <% @event.event_pic.each do |photo| %>
+    <%= image_tag photo.url(:medium) %>
+  <% end %>
+  <% end %>
+
+
 <br>
 <%= @event.location %>
 <br>
