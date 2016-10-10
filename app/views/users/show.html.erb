@@ -19,8 +19,27 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <div class="col-md-9">
     <h2><%= @user.first_name %></h2>
+=======
+<div class="container">
+  <h2>Past events hosted</h2>
+  <% Event.where("user_id = ? AND start_date <= ?", @user.id, Date.today).each do |event| %>
+  <p><%= link_to "#{event.title}", event %></p>
+  <% end %>
+</div>
+
+<div class="container">
+  <h2>Upcoming events hosted</h2>
+  <% Event.where("user_id = ? AND start_date > ?", @user.id, Date.today).each do |event| %>
+  <p><%= link_to "#{event.title}", event %></p>
+  <% end %>
+</div>
+
+
+<button class="btn btn-primary" id="review_user_button">Review User</button>
+>>>>>>> master
 
     <div class="description row-space-3">
         Family description: <%= @user.family_description%>    
@@ -97,4 +116,6 @@
         </script>
       <% end %>
 </div>
+
+
 

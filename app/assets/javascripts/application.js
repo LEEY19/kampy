@@ -16,6 +16,8 @@
 //= require jquery-ui
 //= require jquery.raty
 //= require ratyrate
+//= require underscore
+//= require gmaps_google
 //= require turbolinks
 //= require private_pub
 //= require_tree .

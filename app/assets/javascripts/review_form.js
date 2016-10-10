@@ -1,5 +1,5 @@
-$(document).ready(function() {
-
+$(document).on("turbolinks:load", function () {
+  
   $("#review_form").hide();
   $("#rating_box").hide();
 

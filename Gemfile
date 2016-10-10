@@ -46,6 +46,10 @@ gem 'rmagick'
 
 gem 'mini_magick'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+# for search feature
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -60,10 +64,14 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ratyrate'
 gem 'gon', '~> 6.1'
 gem 'gmaps4rails'
+
 gem 'font-awesome-rails', '~> 4.5'
 
 # customer support
 gem 'zopim_rails', '0.0.8'
+
+gem 'braintree', '~> 2.66'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

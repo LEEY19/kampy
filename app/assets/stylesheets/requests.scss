@@ -1,3 +1,43 @@
 // Place all the styles related to the requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*.dimmed {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dimmedd {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+*/
+
+
+
+/*.requests {
+  max-height: 450px;
+  overflow-y: auto;
+  border-style: solid;
+  border-radius: 5px;
+}*/
+
+
+.request_box {
+  height: 50px;
+/*  #red {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background:#FF2400;
+    opacity: 0;
+  }*/
+}
+
