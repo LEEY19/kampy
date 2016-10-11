@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
 
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-    user_params.permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password)
+    user_params.permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password, {children_attributes: []})
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
-    user_params.permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password, :current_password)
+    user_params.permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password, :current_password, {children_attributes: []})
     end
 
    

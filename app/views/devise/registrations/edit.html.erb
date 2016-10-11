@@ -30,6 +30,13 @@
     </div>
 
     <div class="field">
+    <%= f.fields_for :child do |builder| %>
+    <%= builder.label :first_name %><br />
+    <%= builder.text_field :first_name %>
+  <%end%>
+  </div>
+
+    <div class="field">
       <%= f.label :family_description %><br />
       <%= f.text_field :family_description, autofocus: true, size: 50 %>
     </div>

@@ -16,7 +16,9 @@
         <div class="panel panel-default">
           <div class="panel-heading"></div> 
           <div class="panel-body">
-            To review this host, please scroll to the bottom.<br><br>
+            Total Past Events: <%= @past_events.length %><br>
+            Total Upcoming Events: <%= @upcoming_events.length %><br><br>
+            To see ratings on events by this host, please scroll to the bottom.<br><br>
             To join an event hosted by <%= @user.first_name%>, please click on a link of upcoming events.
           </div>
         </div>
@@ -27,7 +29,9 @@
 
 
         <div class="description row-space-3">
-            <strong>Family description:</strong><br> <%= @user.family_description%> 
+            <strong>Family description:</strong><br> <%= @user.family_description%><br>
+            <strong>Child :</strong> Amy, 9 years old<br> 
+            <strong>Child :</strong> Michael, 7 years old<br> 
         </div><br><br>
 
         <h4>Past Events (<%= @past_events.length %>)</h4><br>
@@ -102,13 +106,14 @@
 
 
       </div>
-      <br><br><strong><p>Reviews from other Users:</p></strong>
+      <br><br><strong><p>Reviews from participants:</p></strong>
       <% @user.reviews.order('created_at DESC').each do |review| %>
         <div class="container"><br>
-          Rating: 
-          <div id="stars_<%= review.id %>"></div>
-          <strong>Event Title: </strong> <%= review.event_title %> <br>
-          <strong>Comments: </strong> <%= review.comment %>
+          <div class="rate-result">
+            <div id="stars_<%= review.id %>"></div>
+            <strong>Event Title: </strong> <%= review.event_title %> <br>
+            <h4><em>"<%= review.comment %>"</em><h4>
+          </div>
         </div>
         <hr>
         <script>

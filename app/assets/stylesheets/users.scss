@@ -41,7 +41,8 @@
 }
 
 .show-pic:hover {
-    opacity: 1.0;
+    transform: scale(1.2);
+    
 }
 
 .back-img {
@@ -51,4 +52,10 @@
   background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 48%, rgba(237,237,237,1) 82%, rgba(237,237,237,1) 100%);
   background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 48%, rgba(237,237,237,1) 82%, rgba(237,237,237,1) 100%);
   background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 48%, rgba(237,237,237,1) 82%, rgba(237,237,237,1) 100%);
+}
+
+.rate-result {
+    border: solid #e6e6e6 1px;
+    padding: 30px;
+    background-color: #f2f2f2;
 }
