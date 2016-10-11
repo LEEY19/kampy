@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161010144900) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +28,9 @@ ActiveRecord::Schema.define(version: 20161010144900) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category_name"
   end
 
   create_table "children", force: :cascade do |t|
@@ -48,6 +50,13 @@ ActiveRecord::Schema.define(version: 20161010144900) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "event_categories", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "event_type"
     t.string   "title",                      null: false
@@ -57,16 +66,16 @@ ActiveRecord::Schema.define(version: 20161010144900) do
     t.time     "start_time"
     t.time     "end_time"
     t.string   "description"
-    t.boolean  "isfree",      default: true
+    t.boolean  "isfree",       default: true
     t.float    "price"
-    t.integer  "open_spots",                 null: false
+    t.integer  "open_spots",                  null: false
     t.string   "age_range"
-    t.string   "event_pic"
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.json     "event_pic"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -158,7 +167,7 @@ ActiveRecord::Schema.define(version: 20161010144900) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "avatar"
-    t.json     "photos"
+    t.string   "photos"
     t.string   "family_description"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

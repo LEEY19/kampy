@@ -1,8 +1,10 @@
 
-<div class="row">
+<div id='user-profile-section'>
   <div class="col-md-3">
     <div class="center">
-      avatar here      
+          <% unless @user.avatar.blank? %>
+            <%= image_tag @user.avatar, class: "avatar-full", id:"profile-pic"%>
+          <%end%>     
       <% if current_user != @user %>
         <div class="row-space-2">
           <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
@@ -19,52 +21,46 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <div class="col-md-9">
     <h2><%= @user.first_name %></h2>
-=======
-<div class="container">
-  <h2>Past events hosted</h2>
-  <% Event.where("user_id = ? AND start_date <= ?", @user.id, Date.today).each do |event| %>
-  <p><%= link_to "#{event.title}", event %></p>
-  <% end %>
-</div>
 
-<div class="container">
-  <h2>Upcoming events hosted</h2>
-  <% Event.where("user_id = ? AND start_date > ?", @user.id, Date.today).each do |event| %>
-  <p><%= link_to "#{event.title}", event %></p>
-  <% end %>
-</div>
-
-
-<button class="btn btn-primary" id="review_user_button">Review User</button>
->>>>>>> master
 
     <div class="description row-space-3">
         Family description: <%= @user.family_description%>    
     </div>
 
-    <h4>Events (<%= @user.events.length %>)</h4><br>
-
+    <h4>Past Events (<%= @past_events.length %>)</h4><br>
     <div class="row">
-      
-      <% @user.events.each do |event| %>
+      <% @past_events.each do |event| %>
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading preview">
               avatar image of event
             </div>
             <div class="panel-body">
-              <%= link_to event.title, event %>
+              <%= link_to "#{event.title}", event %>            
             </div>
           </div>
         </div>
       <% end %>
-
     </div>
 
-  </div>
+    <h4>Upcoming Events (<%= @upcoming_events.length %>)</h4><br>
+    <div class="row">
+      <% @upcoming_events.each do |event| %>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading preview">
+              avatar image of event
+            </div>
+            <div class="panel-body">
+              <%= link_to "#{event.title}", event %>            
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
       <button class="btn btn-primary" id="review_user_button">Review User</button>
 
       <div class="container">
@@ -115,7 +111,7 @@
           });
         </script>
       <% end %>
-</div>
+
 
 
 

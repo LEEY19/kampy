@@ -2,3 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#event-about-section {
+    padding:0px;
+}
+
+.event-info .icon {
+    float: left;
+    width: 8rem;
+    color: #bbbac0;
+    font-size: 3.4rem;
+    line-height: 7.4rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 3px solid #bbbac0;
+}
+
+.event-info {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.event-info .info {
+    padding: 1.3rem 0 0 9rem;
+}
+
+.event-info h3 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.countdown {
+    padding: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.countdown, .countdown li {
+    list-style: none;
+}
+
+.countdown li {
+    display: inline-block;
+    width: 104px;
+    text-align: center;
+    background: #FFF;
+    padding: 15px 5px;
+    margin-right: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.countdown li span {
+    font-size: 40px;
+    font-weight: bold;
+    color: #3b3b3b;
+    height: 108px;
+    line-height: 1.0;
+    position: relative;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
