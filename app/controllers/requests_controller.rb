@@ -19,8 +19,8 @@ class RequestsController < ApplicationController
 		      if @request.save
 		      	@data = "Your request to join the event has been sent"
 		        format.js 
-		        RequestMailer.booking_emailcustomer(current_user, @host, @request.id, @event).deliver_now
-		      	RequestMailer.booking_emailhost(current_user, @host, @request.id, @event).deliver_now
+		       #  RequestMailer.booking_emailcustomer(current_user, @host, @request.id, @event).deliver_now
+		      	# RequestMailer.booking_emailhost(current_user, @host, @request.id, @event).deliver_now
 		      else
 		        format.html {}
 		        format.json { render json: "Please submit a valid request" }

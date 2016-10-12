@@ -42,6 +42,7 @@ handler.buildMap({ provider: {}, internal: {id: 'multi_markers'}}, function(){
       handler.getMap().setZoom(12);
       json.marker.setMap(handler.getMap());
       json.marker.panTo();
+      debugger;
       google.maps.event.trigger(json.marker.getServiceObject(), 'click');
     });
     });

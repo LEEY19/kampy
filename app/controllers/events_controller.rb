@@ -39,7 +39,13 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 
   def show
     @event = Event.find(params[:id])
-    gon.hashh = {lat: @event.latitude, lng: @event.longitude, infowindow: "You are here"}
+    # gon.hashh = {lat: @event.latitude, lng: @event.longitude, infowindow: "You are not here"}
+    @events = Event.all
+    gon.hashhh = []
+    @events.each do |event|
+      gon.hashhh << {lat: event.latitude, lng: event.longitude, infowindow: render_to_string(:partial => "event_map", :locals => { :event => event})}
+    end
+
   end
 
 

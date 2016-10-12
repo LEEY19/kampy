@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function () {
 
 // var handler = Gmaps.build('Google');
 // handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
@@ -12,32 +12,39 @@ $(document).ready(function() {
 //   handler.bounds.extendWith(markers);
 //   handler.fitMapToBounds();
 // });
-
 var handler = Gmaps.build('Google');
-handler.buildMap({ internal: {id: 'geolocation'} }, function(){
+map = handler.buildMap({ internal: {id: 'geolocation'} }, function(){
   // be aware chrome >= 50 requires https for geolocation to work
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
 });
 
-function displayOnMap(position){
 
-  var markers = handler.addMarkers([
-    {lat: position.coords.latitude, lng: position.coords.longitude, infowindow: "You are here"},
-    gon.hashh
-  ]);
-  debugger;
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds(markers);
+function displayOnMap(position){
+  var new_array = gon.hashhh
+  $infoWindow = {lat: position.coords.latitude, lng: position.coords.longitude, infowindow: "You are here"}
+  new_array.push($infoWindow)
+  var markers = handler.addMarkers(new_array);
+  // handler.bounds.extendWith(markers);
+  // handler.fitMapToBounds(markers);
+  handler.map.centerOn(new_array[new_array.length - 1]);
+  handler.getMap().setZoom(14);
+  // var infowindow = new_array[new_array.length - 1].infowindow;
+  // debugger;
+  // infowindow.open(handler.map.serviceObject, new_array[new_array.length - 1].serviceObject);
+  
+  // var infop = $infoWindow.infowindow;
+  // debugger;
+  // infop.open(map);
 };
 
-  function initialize() {
 
-  var input = document.getElementById('address');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
 
     
 });
