@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
 
   get 'search', to: 'search#search'
-  
+
   root "welcome#home"
 
   resources :users, only: [:show]
 
   resources :reviews
 
-  resources :events 
- 
+  resources :events
 
-  resources :requests do 
+
+  resources :requests do
     get 'confirm', on: :member
     get 'decline', on: :member
   end
