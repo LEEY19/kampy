@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
 	def index
 		@users = User.all
 		@conversations = Conversation.involving(current_user)
+
 	end
 
 	def create

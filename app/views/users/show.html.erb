@@ -1,67 +1,88 @@
+<div class="back-img">
+<div class="container">
+    <div id='user-profile-section'>
+      <div class="col-md-3">
+        <div class="center">
+              <% unless @user.avatar.blank? %>
+                <%= image_tag @user.avatar, class: "avatar-full", id:"profile-pic"%>
+              <%end%>     
+          <% if current_user != @user %>
+            <div class="row-space-2">
+              <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+            </div>
+          <% end %>
+        </div><br>
 
-<div id='user-profile-section'>
-  <div class="col-md-3">
-    <div class="center">
-          <% unless @user.avatar.blank? %>
-            <%= image_tag @user.avatar, id:"profile-pic"%>
-          <%end%>     
-      <% if current_user != @user %>
-        <div class="row-space-2">
-          <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+        <div class="panel panel-default">
+          <div class="panel-heading"></div> 
+          <div class="panel-body">
+            Total Past Events: <%= @past_events.length %><br>
+            Total Upcoming Events: <%= @upcoming_events.length %><br><br>
+            To see ratings on events by this host, please scroll to the bottom.<br><br>
+            To join an event hosted by <%= @user.first_name%>, please click on a link of upcoming events.
+          </div>
         </div>
-      <% end %>
-      
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">Verification</div> 
-      <div class="panel-body">
-        Email Address<br>
-        Phone Number
       </div>
-    </div>
+
+      <div class="col-md-9">
+        <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+
+
+        <div class="description row-space-3">
+            <strong>Family description:</strong><br> <%= @user.family_description%><br>
+            <strong>Child :</strong> Amy, 9 years old<br> 
+            <strong>Child :</strong> Michael, 7 years old<br> 
+        </div><br><br>
+
+        <h4>Past Events (<%= @past_events.length %>)</h4><br>
+        <div class="row">
+          <% @past_events.each do |event| %>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading preview">
+                    <% if event.event_pic.present? %>
+                      <%= link_to (image_tag event.event_pic[0].url(:large), class: "show-pic"), event %>
+                    <% end %>
+                </div>
+                <div class="panel-body">
+                  <div class="t-cent">
+                    <strong><%= "#{event.title.upcase}" %></strong> 
+                  </div>           
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div><br>
+
+        <h4>Upcoming Events (<%= @upcoming_events.length %>)</h4><br>
+        <div class="row">
+          <% @upcoming_events.each do |event| %>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading preview">
+                    <% if event.event_pic.present? %>
+                      <%= link_to (image_tag event.event_pic[0].url(:large), class: "show-pic"), event %>
+                    <% end %>
+                </div>
+                <div class="panel-body">
+                  <div class="t-cent">
+                    <strong><%= "#{event.title.upcase}" %></strong><br>
+
+                    <% if event.price == nil %>
+                      <strong><%= "FREE" %></strong>
+                    <% else %>
+                      <strong>RM<%= "#{event.price}" %></strong>   
+                    <% end %>   
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
   </div>
 
-  <div class="col-md-9">
-    <h2><%= @user.first_name %></h2>
 
-
-    <div class="description row-space-3">
-        Family description: <%= @user.family_description%>    
-    </div>
-
-    <h4>Past Events (<%= @past_events.length %>)</h4><br>
-    <div class="row">
-      <% @past_events.each do |event| %>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading preview">
-              avatar image of event
-            </div>
-            <div class="panel-body">
-              <%= link_to "#{event.title}", event %>            
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <h4>Upcoming Events (<%= @upcoming_events.length %>)</h4><br>
-    <div class="row">
-      <% @upcoming_events.each do |event| %>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading preview">
-              avatar image of event
-            </div>
-            <div class="panel-body">
-              <%= link_to "#{event.title}", event %>            
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-      <button class="btn btn-primary" id="review_user_button">Review User</button>
+      <button class="btn btn-primary" id="review_user_button">Review Event</button>
 
       <div class="container">
 
@@ -83,6 +104,7 @@
 
         <% end %>
 
+
         <script>
           $('#user_stars').raty({
             path: '/assets',
@@ -94,15 +116,17 @@
 
 
       </div>
-
+      <br><br><strong><p>Reviews from participants:</p></strong>
       <% @user.reviews.order('created_at DESC').each do |review| %>
-        <div class="container">
-          Rating: 
-          <div id="stars_<%= review.id %>"></div>
-          Event Title: <%= review.event_title %> <br>
-          Comments: <%= review.comment %>
+        <div class="container"><br>
+          <div class="rate-result">
+            <div id="stars_<%= review.id %>"></div>
+              <strong>Event Title: </strong> <%= review.event_title %>
+              <p><em>Reviewed By:<%= @user.first_name %></em></p> 
+              <h4><em>"<%= review.comment %>"</em><h4>
+          </div>
         </div>
-        -------------------------------------
+        
         <script>
           $('#stars_<%= review.id %>').raty({
             path: '/assets',
@@ -112,6 +136,6 @@
         </script>
       <% end %>
 
-
+</div>
 
 

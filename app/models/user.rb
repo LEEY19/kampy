@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :reviews, :dependent => :destroy
   has_many :children, :dependent => :destroy
+  accepts_nested_attributes_for :children
   has_many :notifications, foreign_key: :recipient_id
 
   # Include default devise modules. Others available are:
