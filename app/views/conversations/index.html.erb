@@ -1,6 +1,7 @@
-<div class="row" id='user-conversations-section'>
+
+<div class="row increase-padding-top-2" id='user-conversations-section'>
 	<div class="col-md-12" >
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="conversation-body">r
 			<div class="panel-heading">Your conversations</div>
 			<div class="panel-body">
 				<div class="container">
@@ -11,14 +12,15 @@
 
 							<div class="row conversation">
 								<div class="col-md-2">
-									avatar here
-								</div>
+									<% if other.avatar.present? %>
+								       		 <%= image_tag other.avatar.url(:thumb), id: "user-smaller-avatar" %>
+								    <% end %>								</div>
 								<div class="col-md-2">
-									<%= other.first_name %><br>
+									<strong><%= other.first_name %></strong><br>
 									<%= conversation.messages.last.message_time %>
 								</div>
 								<div class="col-md-8">
-									<%= conversation.messages.last.content %>
+									<i class="fa fa-envelope-o" id="margin-minor-adjust-2" aria-hidden="true"></i><%= conversation.messages.last.content %>
 								</div>
 							</div>
 

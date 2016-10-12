@@ -1,8 +1,8 @@
 
-<div class="container">
+<div class="container"> 
   <div class="form-group">
       <%= form.label :event_pic, "Upload Photos"%>
-      <%= form.file_field :event_pic, multiple: true, class: "form-control", id: "event_pic", class: "btn btn-default" %>
+      <%= form.file_field :event_pic, multiple: true, class: "form-control", id: "event_pic" %>
   </div>
 
   <div class="form-group">
@@ -32,22 +32,22 @@
 
   <div class="form-group">
     <%= form.label :start_date%>
-    <%= form.date_select :start_date, placeholder: "Starts on", class: "form-control", id: "start_date" %>
+    <%= form.date_field :start_date, placeholder: "Starts on", class: "form-control", id: "start_date" %>
   </div>
 
   <div class="form-group">
     <%= form.label :end_date%>
-    <%= form.date_select :end_date, placeholder: "Starts on", class: "form-control", id: "end_date" %>
+    <%= form.date_field :end_date, placeholder: "Starts on", class: "form-control", id: "end_date" %>
   </div>
 
   <div class="form-group">
     <%= form.label :start_time %>
-    <%= form.time_select :start_time, placeholder: "Starts at", class: "form-control", id: "start_time" %>
+    <%= form.time_field :start_time, placeholder: "Starts at", class: "form-control", id: "start_time" %>
   </div>
 
   <div class="form-group">
     <%= form.label :end_time %>
-    <%= form.time_select :end_time, placeholder: "Starts at", class: "form-control", id: "end_time" %>
+    <%= form.time_field :end_time, placeholder: "Starts at", class: "form-control", id: "end_time" %>
   </div>
 
   <div class="form-group">
@@ -72,8 +72,7 @@
 
   <div class="form-group">
     <%= form.label :age_range, "Suggested age range:" %>
-    <%= form.select :age_range, options_for_select([ "  1-3", "  4-6  ", " 7-11", "11-14", "15 +" ], "choose"), class: "form-control", id: "age_range" %>
+    <%= form.select :age_range, options_for_select([ "  1 - 3", "  4 - 6  ", " 7 - 11", "11 - 14", "15 +" ], "choose"), class: "form-control", id: "age_range" %>
   </div>
-
 </div>
 
