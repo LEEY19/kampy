@@ -51,7 +51,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
     def user_params
-      params.require(:user).permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password, child_attributes: [:id, :first_name, :date_of_birth])
+      params.require(:user).permit(:user_type, :first_name, :last_name, :spouse_first_name, :avatar, {photos: []}, :family_description, :encrypted_password, :email, :password, children_attributes: [:id, :first_name, :date_of_birth])
     end
 
   protected
