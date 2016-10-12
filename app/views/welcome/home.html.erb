@@ -1,17 +1,61 @@
     <!-- Header -->
     <header>
-        <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+               <!--  <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li> -->
+              </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="carousel-content carousel-headline">
+        <h2>The easiest way to find fun activities and partners to share it with! </h2>
+      </div>
+      <div class="carousel-caption">
+        <h3>What we do</h3>
+      </div>
+      <img src="assets/about/Kids_inspiration1.jpg" alt="Kids activities inspiration">
+    </div>
+
+    <div class="item">
+      <img src="assets/about/cake_kids.jpg" alt="Chania">
+    </div>
+
+   <!--  <div class="item">
+      <img src="img_flower.jpg" alt="Flower">
+    </div>
+
+    <div class="item">
+      <img src="img_flower2.jpg" alt="Flower">
+    </div>
+ -->  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+        <!-- <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">A platform for kids to find activities and partners to share it with!</div>
                 <div class="intro-heading">Kampy</div>
                 <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
             </div>
-        </div>
+        </div> -->
     </header>
 
 
     <!-- Services Section -->
-    <section id="services">
+    <!-- <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -46,7 +90,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <!--  Carousel Section -->
+
 
        <section id="portfolio">
         <div class="container">
@@ -157,32 +204,39 @@
     </section><!--/#portfolio-->
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <section id="portfolio" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">What are other kids proposing?</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">What are other kids planning?</h2>
+                    <h3 class="section-subheading text-muted">Discover and join new amazing activities around you!</h3>
                 </div>
             </div>
 
-            <% @events.each_slice(3) do |events| %>
+            <% @events.each_slice(4) do |events| %>
 
                 <div class="row">
                     <% events.each do |event| %>
                     <%= render :partial => "show", :locals => { :event => event }  %>
 
-                        <div class="col-md-4 col-sm-6 portfolio-item">
+                        <div class="col-md-3 col-sm-6 portfolio-item ">
                             <a href="#modal_<%= event.id %>" class="portfolio-link" data-toggle="modal">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-plus fa-3x"></i>
                                     </div>
                                 </div>
-                                <img src="assets/portfolio/roundicons.png" class="img-responsive" alt="">
+
+                                <img src= "<%= event.event_pic[0].url()%>" class="img-responsive featured-image" alt="">
+                                  <% if event.price %>
+                                    <div class="ribbon red"><span><%=event.price.round%> MYR</span></div>
+                                  <% else event.isfree %>
+                                    <div class="ribbon"><span>FREE</span></div>
+                                <%end%>
                             </a>
-                            <div class="portfolio-caption">
-                                <h4><%= event.title%></h4>
+                            <div class="portfolio-caption1">
+                                <h5><%= event.title%></h5>
+                                <h5><%= event.start_date%></h5>
                                <!--  <p class="text-muted">< %= category_name%></p> -->
                             </div>
                         </div>
@@ -192,13 +246,59 @@
 
         </div>
     </section>
+    <%if !@suggestions.nil?%>
+        <section id="suggestion" class="bg-orange">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Suggestions of activities around you</h2>
+                        <h3 class="section-subheading text-muted">What could you possibly do around</h3>
+                    </div>
+                </div>
+
+                <% @suggestions.each_slice(4) do |events| %>
+
+                    <div class="row">
+                        <% events.each do |event| %>
+                        <%= render :partial => "show", :locals => { :event => event }  %>
+
+                            <div class="col-md-3 col-sm-6 suggestion-item ">
+                                <a href="#modal_<%= event.id %>" class="suggestion-link" data-toggle="modal">
+                                    <div class="suggestion-hover">
+                                        <div class="suggestion-hover-content">
+                                            <i class="fa fa-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+
+                                    <img src= "<%= event.event_pic[0].url()%>" class="img-responsive featured-image" alt="">
+                                      <% if event.price %>
+                                        <div class="ribbon red"><span><%=event.price.round%> MYR</span></div>
+                                      <% else event.isfree %>
+                                        <div class="ribbon"><span>FREE</span></div>
+                                    <%end%>
+                                </a>
+                                <div class="suggestion-caption">
+                                    <h5><%= event.title%></h5>
+                                    <h5><%= event.start_date%></h5>
+                                   <!--  <p class="text-muted">< %= category_name%></p> -->
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+
+            </div>
+        </section>
+    <%end%>
+
+
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class=bg-light-gray>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">How does-it works?</h2>
+                    <h2 class="section-heading">Be inspired by others and meet them!</h2>
                     <h3 class="section-subheading text-muted">The easiest way to find fun activities and partners to share it with!</h3>
                 </div>
             </div>
@@ -207,35 +307,36 @@
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                                <!-- <h4>Get
+                                    <br>Inspired
+                                    <br>By Others!</h4> -->
+                                <img class="img-circle img-responsive" src="assets/about/parent-thinking.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>Step one</h4>
-                                    <h4 class="subheading">Create your profile</h4>
+                                    <h4 class="subheading">Wondering what to do with your kids?</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Tell others about you, the activities you like to  </p>
+                                    <p class="text-muted"><strong>Kampy</strong> is an amazing source of inspiration fuelled by its members and partners. There are litterally hundreds of activities to choose from, you just have to <strong>choose one!</strong></p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                                <img class="img-circle img-responsive" src="assets/about/Happy-Family-1.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>Step two</h4>
-                                    <h4 class="subheading">Search or propose an activity</h4>
+                                    <h4 class="subheading">Meet other parents and children by sharing their activities</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Using <strong>Kampy</strong> ,you can join other families and share new things everytime! No need for super powers anymore, the community got your back!</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                                <img class="img-circle img-responsive" src="assets/about/3.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -249,7 +350,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                                <img class="img-circle img-responsive" src="assets/about/4.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -418,7 +519,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+                    <span class="copyright">Copyright &copy; Kampy 2016</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">

@@ -6,7 +6,7 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding-top: 150px; 
+  padding-top: 150px;
 }
 .text-muted {
   color: #777777;
@@ -55,6 +55,10 @@ h6 {
 }
 .bg-darkest-gray {
   background-color: #222222;
+}
+
+.bg-orange{
+  background-color: #FFA500;
 }
 .btn-primary {
   color: white;
@@ -203,7 +207,7 @@ fieldset[disabled] .btn-xl.active {
     position: relative;
     display: block;
     padding: 15px 15px;
-    
+
 }
 
 @media (min-width: 768px) {
@@ -235,7 +239,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
-  background-image: url('header-bg.jpg');
+  // background-image: url('header-bg.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -357,12 +361,34 @@ section h3.section-subheading {
   background-color: white;
   text-align: center;
   padding: 25px;
+  min-height: 125px;
 }
+
 #portfolio .portfolio-item .portfolio-caption h4 {
   text-transform: none;
   margin: 0;
 }
 #portfolio .portfolio-item .portfolio-caption p {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  margin: 0;
+}
+
+#portfolio .portfolio-item .portfolio-caption1 {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: orange;
+  text-align: center;
+  padding: 25px;
+  min-height: 125px;
+}
+
+#portfolio .portfolio-item .portfolio-caption1 h4 {
+  text-transform: none;
+  margin: 0;
+}
+#portfolio .portfolio-item .portfolio-caption1 p {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 16px;
@@ -376,6 +402,77 @@ section h3.section-subheading {
     margin: 0 0 30px;
   }
 }
+
+// David suggestions
+
+#suggestion .suggestion-item {
+  margin: 0 0 15px;
+  right: 0;
+}
+#suggestion .suggestion-item .suggestion-link {
+  display: block;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+#suggestion .suggestion-item .suggestion-link .suggestion-hover {
+  background: rgba(254, 209, 54, 0.9);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+}
+#suggestion .suggestion-item .suggestion-link .suggestion-hover:hover {
+  opacity: 1;
+}
+#suggestion .suggestion-item .suggestion-link .suggestion-hover .suggestion-hover-content {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  font-size: 20px;
+  text-align: center;
+  top: 50%;
+  margin-top: -12px;
+  color: white;
+}
+#suggestion .suggestion-item .suggestion-link .suggestion-hover .suggestion-hover-content i {
+  margin-top: -12px;
+}
+#suggestion .suggestion-item .suggestion-link .suggestion-hover .suggestion-hover-content h3,
+#suggestion .suggestion-item .suggestion-link .suggestion-hover .suggestion-hover-content h4 {
+  margin: 0;
+}
+#suggestion .suggestion-item .suggestion-caption {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  padding: 25px;
+  min-height: 125px;
+}
+#suggestion .suggestion-item .suggestion-caption h4 {
+  text-transform: none;
+  margin: 0;
+}
+#suggestion .suggestion-item .suggestion-caption p {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  margin: 0;
+}
+#suggestion * {
+  z-index: 2;
+}
+@media (min-width: 767px) {
+  #suggestion .suggestion-item {
+    margin: 0 0 30px;
+  }
+}
+
+
 .timeline {
   list-style: none;
   padding: 0;
@@ -387,7 +484,7 @@ section h3.section-subheading {
   position: absolute;
   content: "";
   width: 2px;
-  background-color: #f1f1f1;
+  background-color: orange;
   left: 40px;
   margin-left: -1.5px;
 }
@@ -484,7 +581,7 @@ section h3.section-subheading {
     width: 41%;
     float: left;
     padding: 0 20px 20px 30px;
-    text-align: right;
+    text-align: left;
   }
   .timeline > li .timeline-image {
     width: 100px;
@@ -760,3 +857,5 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #fed136;
 }
+
+
