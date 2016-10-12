@@ -65,7 +65,9 @@ ActiveRecord::Schema.define(version: 20161010144900) do
     t.time     "end_time"
     t.string   "description"
     t.boolean  "isfree",      default: true
-    t.float    "price",                      null: false
+
+    t.float    "price"
+
     t.integer  "open_spots",                 null: false
     t.string   "age_range"
     t.integer  "user_id"

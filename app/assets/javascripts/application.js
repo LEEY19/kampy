@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui
@@ -18,10 +18,10 @@
 //= require ratyrate
 //= require underscore
 //= require gmaps_google
-//= require turbolinks
 //= require private_pub
-//= require_tree .
 //= require jquery.geocomplete
+//= require_tree .
+
 
 
 

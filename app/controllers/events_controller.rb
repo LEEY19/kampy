@@ -6,7 +6,8 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
 
 
   def index
-    @events = Event.all
+    @events = Event.where(event_type: "Event")
+    @suggestions = Event.where(event_type: "Suggestion")
   end
 
   def new
@@ -14,7 +15,7 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
   end
 
   def create
-   
+
     @event = Event.new(event_params)
     # @event.full_address = [params[:event][:housenumber], params[:event][:street], params[:event][:postcode], params[:event][:city], params[:event][:state], params[:event][:country]].join(',')
 
@@ -41,6 +42,8 @@ before_action :set_event, only: [:show, :update, :edit, :destroy]
     @event = Event.find(params[:id])
     gon.hashh = {lat: @event.latitude, lng: @event.longitude, infowindow: "You are here"}
   end
+
+
 
 
 private
