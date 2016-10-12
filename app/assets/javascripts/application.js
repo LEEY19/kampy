@@ -23,3 +23,11 @@
 //= require_tree .
 //= require jquery.geocomplete
 
+
+$(document).ready(function() {
+    setTimeout(function(){
+        $('.info span').fadeIn(500);
+    }, 5000);});
+
+
+
